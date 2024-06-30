@@ -1,23 +1,23 @@
 # springboot
 DaY1 :
-@configuration
-@bean
-@autowire
-@component
-@component scan
-@qualifier
-@primary
-@scope() -> create object in demand 
+- @configuration
+- @bean
+- @autowire
+- @component
+- @component scan
+- @qualifier
+- @primary
+- @scope() -> create object in demand 
 
-@RestController
-@GetMapping
-@PutMapping
-@PostMapping
+- @RestController
+- @GetMapping
+- @PutMapping
+- @PostMapping
 
 all are the part of the @component
-@Service
-@Controller
-@Repositories
+- @Service
+- @Controller
+- @Repositories
 
 lombok is used to import, constructor, getters and setters.
 
