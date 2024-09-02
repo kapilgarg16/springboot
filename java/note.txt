@@ -1,0 +1,80 @@
+//final class can be extended further
+
+class ParentClass {
+    void display() {
+        System.out.println("This is the parent class.");
+    }
+}
+
+final class FinalChildClass extends ParentClass {
+    void show() {
+        System.out.println("This is the final child class.");
+    }
+}
+
+// This will cause an error because FinalChildClass is declared as final.
+// class AnotherClass extends FinalChildClass {
+// }
+
+public class Main {
+    public static void main(String[] args) {
+        FinalChildClass obj = new FinalChildClass();
+        obj.display(); // Calling method from the parent class
+        obj.show();    // Calling method from the final class
+    }
+}
+
+
+-----
+// Finalize: Prior to the garbage collection of an object, the finalize method is called so that t
+  //he clean-up activity is implemented. Example:
+public static void main(String[] args) {
+String example = new String("InterviewBit");
+example = null;
+System.gc(); // Garbage collector called
+}
+public void finalize() {
+// Finalize called
+} 
+
+//singleton classes
+class WaterJug{
+   private int waterQuantity = 500;
+   private WaterJug(){}
+   private WaterJug object = null;
+   
+   // Method to provide the service of Giving Water.
+   public int getWater(int quantity){
+       waterQuantity -= quantity;
+       return quantity;
+   }
+   // Method to return the object to the user.
+   public static Waterjug getInstance(){
+       // Will Create a new object if the object is not already created and return the object.
+       if(object == null){
+           object = new WaterJug();
+       }
+       return object;
+   }
+}
+
+
+Heterogeneous Objects: A HashSet can store heterogeneous objects, meaning you can add objects of
+  different types to the same set. This is because HashSet uses the equals() and hashCode() 
+  methods to manage uniqueness, and these methods can work across different types of objects.
+Null Objects: A HashSet can store a single null value. Since HashSet uses a hash table internally,
+  it can accommodate null as long as it’s not more than one null element (because duplicates are not
+  allowed in a set).
+
+  
+  Heterogeneous Objects: A TreeSet cannot store heterogeneous objects. This is because
+  TreeSet internally uses a Comparator (or the natural ordering of the elements, if no 
+  comparator is provided) to maintain the elements in sorted order. When you try to add objects of
+  different types that are not mutually comparable, it throws a ClassCastException at runtime.
+
+For example, trying to insert both a String and an Integer into a TreeSet would result in an exception
+  since Java cannot compare a String with an Integer.
+
+Null Objects: A TreeSet cannot store null values. Attempting to add a null object to a TreeSet will 
+  result in a NullPointerException. This is because the compareTo() or compare() method (used internally
+  by TreeSet to maintain order) cannot compare null with other elements, leading to the exception.
