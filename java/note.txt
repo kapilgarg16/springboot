@@ -78,3 +78,45 @@ For example, trying to insert both a String and an Integer into a TreeSet would 
 Null Objects: A TreeSet cannot store null values. Attempting to add a null object to a TreeSet will 
   result in a NullPointerException. This is because the compareTo() or compare() method (used internally
   by TreeSet to maintain order) cannot compare null with other elements, leading to the exception.
+
+
+
+
+No, it is not mandatory for a catch block to follow a try block in Java. However, if there is no catch block, a finally block must be present after the try block.
+
+There are three valid structures for exception handling in Java:
+try-catch:
+
+A catch block follows the try block and is used to handle exceptions that might be thrown in the try block.
+java
+Copy code
+try {
+    // code that might throw an exception
+} catch (ExceptionType e) {
+    // code to handle the exception
+}
+try-finally:
+
+The finally block follows the try block and executes whether or not an exception occurs. It is used for cleanup code (e.g., closing resources).
+java
+Copy code
+try {
+    // code that might throw an exception
+} finally {
+    // cleanup code that always runs
+}
+try-catch-finally:
+
+Both catch and finally blocks can be used together. The catch block handles exceptions, and the finally block executes after the try (and catch, if present).
+java
+Copy code
+try {
+    // code that might throw an exception
+} catch (ExceptionType e) {
+    // code to handle the exception
+} finally {
+    // cleanup code that always runs
+}
+Key points:
+If there is a try block, there must be either a catch block, a finally block, or both.
+The finally block, if present, is always executed, regardless of whether an exception was caught or not.
