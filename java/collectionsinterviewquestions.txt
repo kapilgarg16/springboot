@@ -1,0 +1,71 @@
+Here are the answers to the first 20 Java Collections interview questions:
+
+1. What is the Java Collections Framework?
+The Java Collections Framework is a set of classes and interfaces that implement commonly reusable collection data structures like lists, sets, queues, and maps. It provides algorithms to perform operations such as searching, sorting, and manipulating collections. The framework simplifies the management of groups of objects in a flexible, efficient, and reusable way.
+
+2. What is the difference between a Collection and Collections in Java?
+Collection: It is an interface that represents a group of objects, known as elements. Subinterfaces like List, Set, and Queue extend Collection.
+Collections: It is a utility class that contains static methods for working with collections, such as sorting, searching, and synchronizing collection objects.
+
+3. What is the root interface of the Collection hierarchy?
+The Collection interface is the root interface of the Collection hierarchy. However, if we look at the entire Collections Framework, the Iterable interface is technically the root, as all collections inherit from Iterable.
+
+4. What are the main interfaces of the Java Collections Framework?
+Collection: The root interface.
+List: Ordered collection (sequence) that allows duplicates (e.g., ArrayList, LinkedList).
+Set: Collection that does not allow duplicates (e.g., HashSet, TreeSet).
+Queue: Collection that follows a specific order for processing elements (e.g., PriorityQueue, ArrayBlockingQueue).
+Map: Key-value pairs, where each key is unique (e.g., HashMap, TreeMap).
+Deque: Double-ended queue, allowing element insertion and removal from both ends (e.g., ArrayDeque).
+5. What is the difference between List, Set, and Map
+List: Allows duplicate elements, maintains insertion order, and elements can be accessed by index.
+Set: Does not allow duplicate elements, and does not guarantee any specific order (except for LinkedHashSet and TreeSet).
+Map: Stores key-value pairs, does not allow duplicate keys, but values can be duplicated.
+6. What is the difference between ArrayList and LinkedList?
+ArrayList: Internally uses a dynamic array, is better for random access (O(1) complexity for get operations), but slower at inserting or deleting elements (O(n) complexity) because elements need to be shifted.
+LinkedList: Internally uses a doubly linked list, which is better for insertions and deletions (O(1) complexity) but slower for random access because it needs to traverse the list to reach an element (O(n) complexity).
+7. How does an ArrayList work internally?
+ArrayList uses a resizable array. When an element is added, if the array is full, it grows its capacity by 50% of its current size (default). It allows constant-time access to elements by index (O(1) complexity), but insertion and deletion are costly when resizing or shifting of elements is required (O(n) complexity).
+8. How does a Vector differ from an ArrayList?
+Vector is synchronized, meaning it is thread-safe but slower than ArrayList in a single-threaded environment.
+ArrayList is not synchronized, so it is faster but not thread-safe.
+Vector doubles its size when resizing, while ArrayList grows by 50%.
+9. What is the difference between HashSet, LinkedHashSet, and TreeSet?
+HashSet: Does not maintain any order, allows null values, and uses hashing for storage.
+LinkedHashSet: Maintains the insertion order of elements.
+TreeSet: Maintains the natural ordering of elements (or a comparator-based ordering), but it does not allow null values and is slower than HashSet.
+10. What is the underlying data structure of a HashSet?
+HashSet internally uses a HashMap to store its elements. The keys in the map are the elements of the set, and the values are dummy objects.
+
+11. What is the difference between HashMap, LinkedHashMap, and TreeMap?
+HashMap: Does not maintain any order of its keys.
+LinkedHashMap: Maintains the insertion order of keys.
+TreeMap: Maintains the natural order of keys (or a comparator-based ordering). It is slower than HashMap because it uses a Red-Black tree internally.
+12. How does a HashMap work internally?
+A HashMap uses a hash table. The key's hashCode() is used to compute the index in the array, and the key-value pair is stored there. In case of hash collisions (same hashCode() for multiple keys), HashMap uses linked lists (or binary trees in the case of Java 8 and above) to store multiple key-value pairs in the same bucket.
+
+13. What are the differences between HashMap and Hashtable?
+Synchronization: HashMap is not synchronized, but Hashtable is synchronized and thread-safe.
+Null keys/values: HashMap allows one null key and multiple null values, while Hashtable does not allow null keys or values.
+Performance: HashMap is faster than Hashtable because it is unsynchronized.
+14. What is the difference between ConcurrentHashMap and HashMap?
+Thread-safety: ConcurrentHashMap is thread-safe and optimized for concurrent operations using segment-level locking. HashMap is not thread-safe.
+Null values: ConcurrentHashMap does not allow null keys or values, while HashMap allows one null key and multiple null values.
+15. What happens if two objects have the same hashCode() in a HashMap?
+When two objects have the same hashCode(), a hash collision occurs. The HashMap stores both objects in the same bucket (using a linked list or a binary tree if the list becomes large). The objects are then differentiated using their equals() method.
+
+16. What is the difference between fail-fast and fail-safe iterators?
+Fail-fast: Iterators that throw a ConcurrentModificationException if the collection is modified during iteration (e.g., iterators of ArrayList, HashMap).
+Fail-safe: Iterators that do not throw an exception if the collection is modified during iteration because they operate on a clone of the collection (e.g., iterators of ConcurrentHashMap, CopyOnWriteArrayList).
+17. What is the difference between Iterator and ListIterator?
+Iterator: Can iterate in only one direction (forward) and allows removing elements during iteration.
+ListIterator: Extends Iterator, can traverse in both directions (forward and backward), and allows modifying elements during iteration.
+18. How does ConcurrentHashMap work?
+ConcurrentHashMap is a thread-safe collection that splits the map into segments (buckets), allowing multiple threads to operate on different segments concurrently. It uses finer-grained locks, so only a portion of the map is locked, improving performance in multithreaded environments.
+
+19. What is the CopyOnWriteArrayList, and how does it work?
+CopyOnWriteArrayList is a thread-safe version of ArrayList. Whenever an element is added or removed, it creates a new copy of the underlying array. This provides thread safety for read operations without requiring locking, but it has a higher memory cost for write operations.
+
+20. What is the difference between Comparable and Comparator?
+Comparable: Defines a natural ordering of objects by implementing the compareTo() method within the class. It is used when objects have a single natural sort order.
+Comparator: Defines an external ordering by implementing the compare() method in a separate class. It is useful when multiple sorting sequences are required, or when you don't have control over the source code of the class you want to compare.
